@@ -36,3 +36,44 @@ int wherey()
 	return -1;
 	return result.Y;
 }
+
+int pilih(int multichoices, int coordx, int coordy)
+{
+//char sekarang
+	char x = 0;
+//char sebelumnya
+	char px = 0;
+
+	do {
+//ambil char
+		x = getch();
+//kalo cocok buang ke layar, balikin cursor
+		if (x > '0' && x < ('0' + multichoices + 1))
+		{
+			cout << x;
+			gotoxy(coordx,coordy);
+		}
+//kalo backspace nol-in
+		else if (x == '\b')
+		{
+			x = 0;
+			cout << x;
+			gotoxy(coordx,coordy);
+		} 
+//kalo enter, cek kecocokan x sebelumnya (x yang sekarang == enter)
+		else if (x == 13)
+		{
+			if (px > '0' && px < '5')
+			{
+				return (px - '0');
+			}
+		}
+//kalo bukan angka atau enter atau backspace
+		else
+		{
+			x = 0;
+		}
+//x jadiin px
+		px = x;
+	} while (1);
+}

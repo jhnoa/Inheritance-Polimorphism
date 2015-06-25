@@ -20,6 +20,7 @@ void put(char*,string);
 void gotoxy(int, int);
 int wherex();
 int wherey();
+int pilih(int, int, int);
 // sumber: http://www.tutorialspoint.com/cplusplus/cpp_templates.htm
 template <typename T>
 inline T const& test (T const& a, T const& b) 

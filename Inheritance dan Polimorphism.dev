@@ -29,7 +29,7 @@ IncludeVersionInfo=0
 SupportXPThemes=0
 CompilerSet=0
 CompilerSettings=00000000g0000000001000000
-UnitCount=3
+UnitCount=11
 
 [VersionInfo]
 Major=1
@@ -72,6 +72,86 @@ BuildCmd=
 
 [Unit3]
 FileName=func.h
+CompileCpp=1
+Folder=Inheritance dan Polimorphism
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit10]
+FileName=circle.h
+CompileCpp=1
+Folder=Inheritance dan Polimorphism
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit4]
+FileName=shape.h
+CompileCpp=1
+Folder=Inheritance dan Polimorphism
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit5]
+FileName=shape.cpp
+CompileCpp=1
+Folder=Inheritance dan Polimorphism
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit6]
+FileName=rectangle.h
+CompileCpp=1
+Folder=Inheritance dan Polimorphism
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit7]
+FileName=rectangle.cpp
+CompileCpp=1
+Folder=Inheritance dan Polimorphism
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit8]
+FileName=square.h
+CompileCpp=1
+Folder=Inheritance dan Polimorphism
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit9]
+FileName=square.cpp
+CompileCpp=1
+Folder=Inheritance dan Polimorphism
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit11]
+FileName=circle.cpp
 CompileCpp=1
 Folder=Inheritance dan Polimorphism
 Compile=1
