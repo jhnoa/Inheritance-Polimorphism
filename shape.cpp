@@ -30,6 +30,7 @@ bool shape::operator < (shape param)
 		if (temp.perimeter < param.perimeter) return true;
 		else return false;
 	}
+	return false;
 }
 
 bool shape::operator == (shape param)

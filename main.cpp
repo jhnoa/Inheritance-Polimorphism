@@ -85,7 +85,6 @@ int menuTampil()
 	}
 	else
 	{
-		int n;
 		while (menuTampilLanjut(x-1) != 1);
 	}
 	return 0;
@@ -238,7 +237,6 @@ void hapus(int mode)
 //menu per mode
 	if(mode == 1)
 	{
-		circle *temp = new circle;
 		cout << "Menu Hapus Circle" <<endl
 			 << endl
 			 << "Masukan Jari-jari: ";
@@ -247,7 +245,6 @@ void hapus(int mode)
 	}
 	else if(mode == 2)
 	{
-		square *temp = new square;
 		cout << "Menu Hapus Square" <<endl
 			 << endl
 			 << "Masukan Sisi: ";
@@ -256,7 +253,6 @@ void hapus(int mode)
 	}
 	else if(mode == 3)
 	{
-		rectangle *temp = new rectangle;
 		cout << "Menu Hapus Rectangle" <<endl
 			 << endl
 			 << "Masukan Panjang: ";
