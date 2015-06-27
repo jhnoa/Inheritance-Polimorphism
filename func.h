@@ -14,6 +14,7 @@
 #include <algorithm>
 #include <Windows.h>
 #include <conio.h>
+#include <list>
 using namespace std;
 //int name = 0, age = 0, address = 0;
 void put(char*,string);
@@ -21,6 +22,8 @@ void gotoxy(int, int);
 int wherex();
 int wherey();
 int pilih(int, int, int);
+int pilihYN(int, int);
+int inputInt(int, int);
 // sumber: http://www.tutorialspoint.com/cplusplus/cpp_templates.htm
 template <typename T>
 inline T const& test (T const& a, T const& b) 

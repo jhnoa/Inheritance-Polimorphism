@@ -45,6 +45,7 @@ int pilih(int multichoices, int coordx, int coordy)
 	char px = 0;
 
 	do {
+		gotoxy(coordx,coordy);
 //ambil char
 		x = getch();
 //kalo cocok buang ke layar, balikin cursor
@@ -63,7 +64,7 @@ int pilih(int multichoices, int coordx, int coordy)
 //kalo enter, cek kecocokan x sebelumnya (x yang sekarang == enter)
 		else if (x == 13)
 		{
-			if (px > '0' && px < '5')
+			if (px > '0' && px < ('0' + multichoices + 1))
 			{
 				return (px - '0');
 			}
@@ -72,8 +73,88 @@ int pilih(int multichoices, int coordx, int coordy)
 		else
 		{
 			x = 0;
+			cout << x;
+			gotoxy(coordx,coordy);
 		}
 //x jadiin px
 		px = x;
 	} while (1);
+}
+
+int pilihYN(int coordx, int coordy)
+{
+//char sekarang
+	char x = 0;
+//char sebelumnya
+	char px = 0;
+
+	do {
+//ambil char
+		x = getch();
+//kalo cocok buang ke layar, balikin cursor
+		if (tolower(x) == 'n' || tolower(x) == 'y')
+		{
+			cout << (char)x;
+			gotoxy(coordx,coordy);
+		}
+//kalo backspace nol-in
+		else if (x == '\b')
+		{
+			x = 0;
+			cout << x;
+			gotoxy(coordx,coordy);
+		} 
+//kalo enter, cek kecocokan x sebelumnya (x yang sekarang == enter)
+		else if (x == 13)
+		{
+			if (tolower(px) == 'y')
+			{
+				return 1;
+			}
+			else if(tolower(px) == 'n')
+			{
+				return 0;
+			}
+		}
+//kalo bukan angka atau enter atau backspace
+		else
+		{
+			x = 0;
+			cout << x;
+			gotoxy(coordx,coordy);
+		}
+//x jadiin px
+		px = x;
+	} while (1);
+}
+
+int inputInt(int coordx, int coordy)
+{
+	string str;
+	int n;
+	do {
+		int x = getch();
+		if(isdigit(x))
+		{
+			gotoxy(coordx + n, coordy);
+			cout << (char)x;
+			n++;
+			str.append<int>(1,x);
+		}
+		else if(x == '\b')
+		{
+			str.erase(str.end());
+			n--;
+			gotoxy(coordx + n, coordy);
+			cout << ' ';
+			gotoxy(coordx + n, coordy);
+			
+		}
+		else if(x == 13)
+		{
+			int num;
+			num = stoi(str);
+			return num;
+		}
+	} while(1);
 }

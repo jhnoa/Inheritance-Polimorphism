@@ -8,9 +8,7 @@ class circle : public shape
 	public:
 		circle();
 		~circle();
-		void setValue(int a){
-			width = a;
-		}
+		void setValue(int a){width = a;}
 		
 	protected:
 };

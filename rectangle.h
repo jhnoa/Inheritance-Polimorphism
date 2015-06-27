@@ -7,11 +7,9 @@ class rectangle : public shape
 {
 	public:
 		rectangle();
+		rectangle(int, int);
 		~rectangle();
-		void setValue(int a, int b){
-			width = a;
-			height = b;
-		}
+		void setValue(int a, int b){width = a; height = b;}
 	protected:
 };
 

@@ -8,9 +8,7 @@ class square : public shape
 	public:
 		square();
 		~square();
-		void setValue(int a){
-			width = a;
-		}
+		void setValue(int a){width = a;}
 	protected:
 };
 
