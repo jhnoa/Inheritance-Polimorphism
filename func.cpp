@@ -130,8 +130,8 @@ int pilihYN(int coordx, int coordy)
 
 int inputInt(int coordx, int coordy)
 {
-	string str;
-	int n;
+	int a;
+	int n = 0;
 	do {
 		int x = getch();
 		if(isdigit(x))
@@ -139,22 +139,19 @@ int inputInt(int coordx, int coordy)
 			gotoxy(coordx + n, coordy);
 			cout << (char)x;
 			n++;
-			str.append<int>(1,x);
+			a = a*10 + x - '0';
 		}
-		else if(x == '\b')
+		else if(x == '\b' && n > 0)
 		{
-			str.erase(str.end());
+			a /= 10;
 			n--;
 			gotoxy(coordx + n, coordy);
 			cout << ' ';
 			gotoxy(coordx + n, coordy);
-			
 		}
 		else if(x == 13)
 		{
-			int num;
-			num = stoi(str);
-			return num;
+			return a;
 		}
 	} while(1);
 }

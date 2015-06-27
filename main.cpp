@@ -230,8 +230,8 @@ void initialize()
 
 void hapus(int mode)
 {
-	fstream file;
-	int x,y,tempx,tempy;
+	fstream file,file1;
+	int x,y,tempx,tempy, n = -1;
 	system("cls");
 	bool found = false;
 
@@ -243,7 +243,7 @@ void hapus(int mode)
 			 << endl
 			 << "Masukan Jari-jari: ";
 		x = inputInt(19, 2);
-		file.open("circle.txt", fstream::in);
+		file.open("circle.txt", fstream::in | fstream::out);
 	}
 	else if(mode == 2)
 	{
@@ -252,7 +252,7 @@ void hapus(int mode)
 			 << endl
 			 << "Masukan Sisi: ";
 		x = inputInt(14, 2);
-		file.open("square.txt", fstream::in);
+		file.open("square.txt", fstream::in | fstream::out);
 	}
 	else if(mode == 3)
 	{
@@ -264,7 +264,7 @@ void hapus(int mode)
 		cout << endl 
 			 << "Masukan Lebar: ";
 		y = inputInt(15, 3);
-		file.open("rectangle.txt", fstream::in);
+		file.open("rectangle.txt", fstream::in | fstream::out);
 	}
 //baca dari file
 	while(!file.eof())
@@ -273,53 +273,94 @@ void hapus(int mode)
 //kalo file abis dengan enter
 		if(tempx == 0) break;
 		if(mode == 3) file >> tempy;
-		if(x == tempx && mode != 3 && found == false)
+		if(x == tempx && mode != 3)
 		{
-			file.close();
 			cout << endl
 				 << "Data ditemukan." << endl;
 			if(mode == 1)cout << "Jari-jari: " << x <<endl;
 			if(mode == 2)cout << "Sisi: " << x << endl;
 			cout << "Yakin Akan Dihapus?(Y/N) ";
-			int n = pilihYN(25, 5);
-			if (n == 1)
-			{
-				if (mode == 1){
-					circle *temp = new circle;
-					circle *temp1 = new circle[mycircle.size()];
-					int m = 0;
-					temp->setValue(x);
-					myshape.remove(*temp);
-					mycircle.remove(*temp);
-					file.open("circle.txt", fstream::out | fstream::trunc);
-					for(list<circle>::iterator it = mycircle.begin(); it!=mycircle.end(); it++)
-					{
-						temp[m] = *it;
-						file << temp1[m].getW() << '\t' << temp1[m].getH() << endl;
-						m++;
-					}
-					return;
-				}
-				if (mode == 2){
-					square *temp = new square;
-					temp->setValue(x);
-					myshape.remove(*temp);
-				}
-				
-				
-					
-				
-//				if (mode == 2) mysquare.remove(temp);
-//				delete temp;
-			}
-			else if(n == 2)
-			{
-				cout << "Hapus data dibatalkan." << endl
-					 << endl
-					 << "Ketik apa saja untuk kembali";
-				getch(); return;
-			}
+			n = pilihYN(25, 5);
+			gotoxy(0,7);
+			break;
+		}
+		if(x == tempx && y == tempy && mode == 3)
+		{
+			cout << endl
+				 << "Data ditemukan." << endl;
+			cout << "Panjang: " << x <<endl;
+			cout << "Lebar: " << y << endl;
+			cout << "Yakin Akan Dihapus?(Y/N) ";
+			n = pilihYN(25, 7);
+			gotoxy(0,9);
+			break;
 		}
 	}
-	
+	if (n == 1)
+	{
+		file1.open("temp", fstream::out | fstream::trunc);
+		file.seekg(fstream::beg);
+		if (mode == 1){
+			while(!file.eof())
+			{
+				tempx = 0;
+				file >> tempx;
+				if(tempx == x && found == false){continue; found = true;}
+				else if(tempx == 0) break;
+				else file1 << tempx << endl;
+			}
+			file.close();
+			file1.close();
+			remove("circle.txt");
+			rename("temp", "circle.txt");
+			mycircle.clear();
+		}
+		if (mode == 2){
+			while(!file.eof())
+			{
+				tempx = 0;
+				file >> tempx;
+				if(tempx == x && found == false){continue; found = true;}
+				else if(tempx == 0) break;
+				else file1 << tempx << endl;
+			}
+			file.close();
+			file1.close();
+			remove("square.txt");
+			rename("temp", "square.txt");
+			mysquare.clear();
+		}
+		if (mode == 3){
+			while(!file.eof())
+			{
+				tempx = 0;
+				file >> tempx >> tempy;
+				if(tempx == x && tempy == y && found == false){continue; found = true;}
+				else if(tempx == 0) break;
+				else file1 << tempx << '\t' << tempy << endl;
+			}
+			file.close();
+			file1.close();
+			remove("rectangle.txt");
+			rename("temp", "rectangle.txt");
+			myrect.clear();
+		}
+		cout << "Data dihapus.";
+		getch();return;
+		myshape.clear();
+		initialize();
+	}
+	else if(n == 0)
+	{
+		file.close();
+		cout << "Hapus data dibatalkan." << endl
+			 << endl
+			 << "Ketik apa saja untuk kembali";
+		getch(); return;
+	}
+	cout << endl
+		 << "Data Tidak Ditemukan." << endl
+		 << endl
+		 << "Ketik apa saja untuk kembali";
+	getch(); return;
 }
