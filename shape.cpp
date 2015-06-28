@@ -11,26 +11,35 @@ shape::~shape()
 int shape::mode(int x = 0)
 {
 	static int mode;
-	if(x == 0) return mode;
-	else mode = x;
-	
+	if(x != 0) return mode = x;
 	return mode;
 }
 
 bool shape::operator < (shape param)
 {
+	if (mode(0) == 1)
+	{
+		if(this->getArea() < param.getArea()) return true;
+		else return false;
+	}
+	else if(mode(0) == 2)
+	{
+		if (this->getPerimeter() < param.getPerimeter()) return true;
+		else return false;
+	}
+//	return false;
+}
+
+shape shape::operator = (list<shape>::iterator param)
+{
 	shape temp;
-	if (mode() == 1)
-	{
-		if(temp.area < param.area) return true;
-		else return false;
-	}
-	else if(mode() == 2)
-	{
-		if (temp.perimeter < param.perimeter) return true;
-		else return false;
-	}
-	return false;
+	temp.width = param->width;
+	temp.height = param->height;
+	temp.area = param->area;
+	temp.perimeter = param->perimeter;
+	temp.type = param->type;
+	return temp;
+//	return false;
 }
 
 bool shape::operator == (shape param)

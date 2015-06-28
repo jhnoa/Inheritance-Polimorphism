@@ -1,7 +1,7 @@
 #include "func.h"
 #include "shape.h"
-#include "rectangle.h"
 #include "square.h"
+#include "rectangle.h"
 #include "circle.h"
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 
@@ -164,9 +164,94 @@ int menuTampilLanjut(int x)
 		 << endl
 		 << "Pilihan Anda: ";
 	int y = pilih(3, 14, 6);
-	if(y == 1){}
-	else if(y == 2){}
-	else if(y == 3) return 1;
+	if(y == 3) return 1;
+	Shape.mode(y);
+	// circle
+	if(x == 1) {
+		system("cls");
+		
+		mycircle.sort();
+		
+		if(y == 1) {cout << "Tampilkan Circle Berdasarkan Luas" << endl;}// sort mycircle dengan luas
+		else if(y == 2) {cout << "Tampilkan Circle Berdasarkan Keliling" << endl;}// sort circle dengan keliling
+			
+		list<circle>::iterator p;
+		int n = 1;
+		
+		for(p = mycircle.begin();p != mycircle.end();p++) {
+			cout << "circle" << n << endl;
+			
+			if(y == 1) {
+				cout << "Luas = " << p->getArea() << " cm^(2)" << endl;
+			}
+			else if(y == 2) {
+				cout << "Keliling = " << p->getPerimeter()  << " cm" << endl;
+			}
+			cout << "Jari - jari = " << p->getW() << " cm" << endl << endl;
+			n++;
+		}
+		
+		getch();
+	}
+	// square
+	else if(x == 2) {
+		if(y == 1) {}// sort mysquare dengan luas
+		else if(y == 2) {}// sort square dengan keliling
+		
+		system("cls");
+		
+		mysquare.sort();
+		
+		cout << "square" << endl;
+		list<square>::iterator p;
+		int n = 1;
+		
+		for(p = mysquare.begin();p != mysquare.end();p++) {
+			cout << "square" << n << endl;
+			
+			if(y == 1) {
+				cout << "Luas = " << p->getArea() << " cm^(2)" << endl;
+			}
+			else if(y == 2) {
+				cout << "Keliling = " << p->getPerimeter()  << " cm" << endl;
+			}
+			cout << "Sisi = " << p->getW() << " cm" << endl << endl;
+			n++;
+		}
+		
+		getch();
+	}
+	// rect
+	else if(x == 3) {
+		if(y == 1) {}// sort mysquare dengan luas
+		else if(y == 2) {}// sort square dengan keliling
+		
+		system("cls");
+		
+		myrect.sort();
+		
+		cout << "rectangle" << endl;
+		list<rectangle>::iterator p;
+		int n = 1;
+		
+		for(p = myrect.begin();p != myrect.end();p++) {
+			cout << "rectangle" << n << endl;
+			
+			if(y == 1) {
+				cout << "Luas = " << p->getArea() << " cm^(2)" << endl;
+			}
+			else if(y == 2) {
+		//		cout << "Keliling = " <<  << " cm" << endl;
+			}
+			cout << "Panjang = " << p->getW() << " cm" << endl
+				 << "Lebar   = " << p->getH() << " cm" << endl << endl;
+			n++;
+		}
+		
+		getch();
+	}
+	
+	
 	return 0;
 }
 
@@ -178,8 +263,9 @@ void initialize()
 	file.open("circle.txt");
 	while(!file.eof())
 	{
-		circle *temp = new circle;
 		int x;
+		x = 0;
+		circle *temp = new circle;
 		file >> x;
 		if (x == 0) break;
 		temp->setValue(x);
@@ -193,8 +279,9 @@ void initialize()
 	file.open("square.txt");
 	while(!file.eof())
 	{
-		square *temp = new square;
 		int x;
+		x = 0;
+		square *temp = new square;
 		file >> x;
 		if (x == 0) break;
 		temp->setValue(x);
@@ -208,8 +295,9 @@ void initialize()
 	file.open("rectangle.txt");
 	while(!file.eof())
 	{
-		rectangle *temp = new rectangle;
 		int x, y;
+		x = 0;
+		rectangle *temp = new rectangle;
 		file >> x >> y;
 		if (x == 0) break;
 		temp->setValue(x, y);
@@ -221,10 +309,11 @@ void initialize()
 
 //sorting	
 	Shape.mode(1);
-	mycircle.sort();
-	myrect.sort();
-	mysquare.sort();
-	myshape.sort();
+//	mycircle.sort();
+//	myrect.sort();
+//	mysquare.sort();
+//	myshape.sort();
+//	cout << Shape.mode(0); getch();
 }
 
 void hapus(int mode)
@@ -232,7 +321,6 @@ void hapus(int mode)
 	fstream file,file1;
 	int x,y,tempx,tempy, n = -1;
 	system("cls");
-	bool found = false;
 
 //menu per mode
 	if(mode == 1)
@@ -301,7 +389,7 @@ void hapus(int mode)
 			{
 				tempx = 0;
 				file >> tempx;
-				if(tempx == x && found == false){continue; found = true;}
+				if(tempx == x)continue;
 				else if(tempx == 0) break;
 				else file1 << tempx << endl;
 			}
@@ -309,14 +397,14 @@ void hapus(int mode)
 			file1.close();
 			remove("circle.txt");
 			rename("temp", "circle.txt");
-			mycircle.clear();
+			
 		}
 		if (mode == 2){
 			while(!file.eof())
 			{
 				tempx = 0;
 				file >> tempx;
-				if(tempx == x && found == false){continue; found = true;}
+				if(tempx == x)continue;
 				else if(tempx == 0) break;
 				else file1 << tempx << endl;
 			}
@@ -324,14 +412,14 @@ void hapus(int mode)
 			file1.close();
 			remove("square.txt");
 			rename("temp", "square.txt");
-			mysquare.clear();
+			
 		}
 		if (mode == 3){
 			while(!file.eof())
 			{
 				tempx = 0;
 				file >> tempx >> tempy;
-				if(tempx == x && tempy == y && found == false){continue; found = true;}
+				if(tempx == x && tempy == y)continue;
 				else if(tempx == 0) break;
 				else file1 << tempx << '\t' << tempy << endl;
 			}
@@ -339,12 +427,15 @@ void hapus(int mode)
 			file1.close();
 			remove("rectangle.txt");
 			rename("temp", "rectangle.txt");
-			myrect.clear();
+			
 		}
 		cout << "Data dihapus.";
-		getch();return;
+		mycircle.clear();
+		mysquare.clear();
+		myrect.clear();
 		myshape.clear();
 		initialize();
+		getch();return;
 	}
 	else if(n == 0)
 	{
@@ -360,3 +451,5 @@ void hapus(int mode)
 		 << "Ketik apa saja untuk kembali";
 	getch(); return;
 }
+
+

@@ -1,6 +1,6 @@
 #ifndef RECTANGLE_H
 #define RECTANGLE_H
-
+#include "func.h"
 #include "shape.h"
 
 class rectangle : public shape
@@ -9,7 +9,11 @@ class rectangle : public shape
 		rectangle();
 		rectangle(int, int);
 		~rectangle();
-		void setValue(int a, int b){width = a; height = b;}
+		bool operator < (rectangle);// buat sorting list
+		rectangle operator = (list<rectangle>::iterator);
+		void setValue(int a, int b){width = a; height = b; type = 2; rectangle::luas(); rectangle::keliling();}
+		void luas(){area = width * height;}
+		void keliling(){perimeter = 2 * (width + height);}
 	protected:
 };
 
