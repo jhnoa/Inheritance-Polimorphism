@@ -44,7 +44,41 @@ shape shape::operator = (list<shape>::iterator param)
 
 bool shape::operator == (shape param)
 {
-	shape temp;
-	if(temp.getH() == param.getH() && temp.getW() == param.getW()) return true;
+	if(this->getH() == param.getH() && this->getW() == param.getW()) return true;
 	else return false;
+}
+
+string shape::getBentuk() {
+	if(type == 1) return "Circle";
+	if(type == 2) return "Rectangle";
+	if(type == 3) return "Square";
+}
+
+string shape::getAttr()
+{
+	char *buffer = new char[1000];
+	string s;
+	
+	if(type == 2) { //rectangle
+		s = "Panjang = ";
+		itoa(height,buffer,10);
+		s += buffer;
+		s += "\tLebar = ";
+		itoa(width,buffer,10);
+		s += buffer;
+	}
+	else {
+		if(type == 1) {
+			s = "Jari-jari = ";
+			
+		}
+		else if(type == 3) {
+			s = "Sisi = ";
+			
+		}
+		itoa(width,buffer,10);
+		s += buffer;
+	}
+	delete[] buffer;
+	return s;
 }

@@ -34,3 +34,12 @@ circle circle::operator = (list<circle>::iterator param)
 	return temp;
 //	return false;
 }
+
+string circle::getAttr()
+{
+	char *buffer = new char[1000];
+	string s = "Jari-jari = ";
+	itoa(this->width,buffer,10);
+	s = s + buffer;
+	return s;
+}

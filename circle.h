@@ -14,6 +14,9 @@ class circle : public shape
 		void luas(){area = 3.14159 * width * width;}
 		void keliling(){perimeter = 3.14159 * width *2;}
 		
+		virtual string getBentuk() {return "Circle";}
+		string getAttr();
+		
 	protected:
 };
 

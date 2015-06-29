@@ -13,6 +13,8 @@ class square : public shape
 		void setValue(int a){width = a; type = 3; square::luas(); square::keliling();}
 		void luas(){area = width * width;}
 		void keliling(){perimeter = width *4;}
+		
+//		string getBentuk() {return "Square";}
 	protected:
 };
 

@@ -14,6 +14,8 @@ class rectangle : public shape
 		void setValue(int a, int b){width = a; height = b; type = 2; rectangle::luas(); rectangle::keliling();}
 		void luas(){area = width * height;}
 		void keliling(){perimeter = 2 * (width + height);}
+		
+//		string getBentuk() {return "Rectangle";}
 	protected:
 };
 

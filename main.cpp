@@ -10,6 +10,7 @@ int menuTampil();
 int menuTambah();
 int menuHapus();
 int menuTampilLanjut(int);
+void printHead(int,int,int);
 void initialize();
 void hapus(int);
 
@@ -167,92 +168,214 @@ int menuTampilLanjut(int x)
 	if(y == 3) return 1;
 	Shape.mode(y);
 	// circle
-	if(x == 1) {
-		system("cls");
+	if(x ==0) {
+		system("cls");	
+		myshape.sort();
 		
+		list<shape>::iterator p;
+		p = myshape.end();
+		p--;
+		
+		cout.setf(ios::left, ios::adjustfield);
+		
+		int n;
+		if(y == 1) {
+			n = log(p->getArea()) + 1;
+	//		cout << n;
+			if(n<18) n = 18;
+	//		cout << n;
+			cout << "Tampilkan Semua Shape Berdasarkan Luas" << endl << endl;
+			for(int i = 0;i<3*n;i++) cout << "-";
+			cout << endl;
+			cout << setw(11) << "Shape" << setw(n+1) << "Luas (cm2)" << setw(18) << "Attribut (cm)" << endl;
+		}
+		else if(y == 2) {
+			n = log(p->getPerimeter()) + 1;
+	//		cout << n;
+			if(n<18) n = 18;
+	//		cout << n;
+			cout << "Tampilkan Semua Shape Berdasarkan Keliling" << endl << endl;
+			for(int i = 0;i<3*n;i++) cout << "-";
+			cout << endl;
+			cout << setw(11) << "Shape" << setw(n+1) << "Keliling (cm)" << setw(18) << "Attribut (cm)" << endl;
+		}
+		for(int i = 0;i<3*n;i++) cout << "-";
+		cout << endl;
+		
+		for(p = myshape.begin();p != myshape.end();p++) {
+			if(y == 1) {
+				
+				cout << setw(11) << p->getBentuk() << setw(n+1) << p->getArea() << setw(40) << p->getAttr() << endl;
+			//	cout << setw(n+1) << p->getArea() << setw(10) << p->getW() << endl;
+			}
+			else if(y == 2) {
+				cout << setw(11) << p->getBentuk() << setw(n+1) << p->getPerimeter() << setw(40) << p->getAttr() << endl;
+			//	cout << setw(n+1) << p->getPerimeter() << setw(10) << p->getW() << endl;
+			}
+		}
+		cout.unsetf(ios::adjustfield);
+		
+		getch();
+	}
+	else if(x == 1) {
+		system("cls");	
 		mycircle.sort();
 		
-		if(y == 1) {cout << "Tampilkan Circle Berdasarkan Luas" << endl;}// sort mycircle dengan luas
-		else if(y == 2) {cout << "Tampilkan Circle Berdasarkan Keliling" << endl;}// sort circle dengan keliling
-			
 		list<circle>::iterator p;
-		int n = 1;
-		
-		for(p = mycircle.begin();p != mycircle.end();p++) {
-			cout << "circle" << n << endl;
-			
-			if(y == 1) {
-				cout << "Luas = " << p->getArea() << " cm^(2)" << endl;
-			}
-			else if(y == 2) {
-				cout << "Keliling = " << p->getPerimeter()  << " cm" << endl;
-			}
-			cout << "Jari - jari = " << p->getW() << " cm" << endl << endl;
-			n++;
+		p = mycircle.end();
+		p--;
+	//	cout << p->getArea() << endl << p->getPerimeter() << endl;
+		int n;
+		if(y == 1) {
+			n = log(p->getArea()) + 1;
+	//		cout << n;
+			if(n<18) n = 18;
+	//		cout << n;
+			printHead(n,x,y);
+		}
+		else if(y == 2) {
+			n = log(p->getPerimeter()) + 1;
+	//		cout << n;
+			if(n<18) n = 18;
+	//		cout << n;
+			printHead(n,x,y);
 		}
 		
+		cout.setf(ios::left, ios::adjustfield);
+		for(p = mycircle.begin();p != mycircle.end();p++) {
+			if(y == 1) {
+				cout << setw(n+1) << p->getArea() << setw(10) << p->getW() << endl;
+			}
+			else if(y == 2) {
+				cout << setw(n+1) << p->getPerimeter() << setw(10) << p->getW() << endl;
+			}
+		}
+		cout.unsetf(ios::adjustfield);
 		getch();
 	}
-	// square
 	else if(x == 2) {
-		if(y == 1) {}// sort mysquare dengan luas
-		else if(y == 2) {}// sort square dengan keliling
-		
-		system("cls");
-		
+		system("cls");	
 		mysquare.sort();
 		
-		cout << "square" << endl;
 		list<square>::iterator p;
-		int n = 1;
-		
-		for(p = mysquare.begin();p != mysquare.end();p++) {
-			cout << "square" << n << endl;
-			
-			if(y == 1) {
-				cout << "Luas = " << p->getArea() << " cm^(2)" << endl;
-			}
-			else if(y == 2) {
-				cout << "Keliling = " << p->getPerimeter()  << " cm" << endl;
-			}
-			cout << "Sisi = " << p->getW() << " cm" << endl << endl;
-			n++;
+		p = mysquare.end();
+		p--;
+	//	cout << p->getArea() << endl << p->getPerimeter() << endl;
+		int n;
+		if(y == 1) {
+			n = log(p->getArea()) + 1;
+	//		cout << n;
+			if(n<18) n = 18;
+	//		cout << n;
+			printHead(n,x,y);
+		}
+		else if(y == 2) {
+			n = log(p->getPerimeter()) + 1;
+	//		cout << n;
+			if(n<18) n = 18;
+	//		cout << n;
+			printHead(n,x,y);
 		}
 		
+		cout.setf(ios::left, ios::adjustfield);
+		for(p = mysquare.begin();p != mysquare.end();p++) {
+			if(y == 1) {
+				cout << setw(n+1) << p->getArea() << setw(10) << p->getW() << endl;
+			}
+			else if(y == 2) {
+				cout << setw(n+1) << p->getPerimeter() << setw(10) << p->getW() << endl;
+			}
+		}
+		cout.unsetf(ios::adjustfield);
 		getch();
 	}
-	// rect
 	else if(x == 3) {
-		if(y == 1) {}// sort mysquare dengan luas
-		else if(y == 2) {}// sort square dengan keliling
-		
-		system("cls");
-		
+		system("cls");	
 		myrect.sort();
 		
-		cout << "rectangle" << endl;
 		list<rectangle>::iterator p;
-		int n = 1;
-		
-		for(p = myrect.begin();p != myrect.end();p++) {
-			cout << "rectangle" << n << endl;
-			
-			if(y == 1) {
-				cout << "Luas = " << p->getArea() << " cm^(2)" << endl;
-			}
-			else if(y == 2) {
-		//		cout << "Keliling = " <<  << " cm" << endl;
-			}
-			cout << "Panjang = " << p->getW() << " cm" << endl
-				 << "Lebar   = " << p->getH() << " cm" << endl << endl;
-			n++;
+		p = myrect.end();
+		p--;
+	//	cout << p->getArea() << endl << p->getPerimeter() << endl;
+		int n;
+		if(y == 1) {
+			n = log(p->getArea()) + 1;
+	//		cout << n;
+			if(n<18) n = 18;
+	//		cout << n;
+			printHead(n,x,y);
+		}
+		else if(y == 2) {
+			n = log(p->getPerimeter()) + 1;
+	//		cout << n;
+			if(n<18) n = 18;
+	//		cout << n;
+			printHead(n,x,y);
 		}
 		
+		cout.setf(ios::left, ios::adjustfield);
+		for(p = myrect.begin();p != myrect.end();p++) {
+			if(y == 1) {
+				cout << setw(n+1) << p->getArea() << setw(18) << p->getH() << setw(10) << p->getW() << endl;
+			}
+			else if(y == 2) {
+				cout << setw(n+1) << p->getPerimeter() << setw(18) << p->getH() << setw(10) << p->getW() << endl;
+			}
+		}
+		cout.unsetf(ios::adjustfield);
 		getch();
 	}
 	
 	
 	return 0;
+}
+
+void printHead(int n,int x, int y) {
+	string s,t;
+	cout.setf(ios::left, ios::adjustfield);
+	//	cout << fixed;
+	
+	if(x == 1) {s = "Circle"; t = "Jari-jari (cm)";}
+	else if(x == 2) {s = "Shape"; t = "Sisi (cm)";}
+	else if(x == 3) {s = "Rectangle";}
+		
+	if(y == 1) {
+		cout << "Tampilkan " << s << " Berdasarkan Luas" << endl << endl;
+		if(x == 3) {
+			for(int i = 0;i<3*n;i++) cout << "-";
+			cout << endl;
+			cout << setw(n+1) << "Luas (cm2)" << setw(18) << "Panjang (cm)" << setw(10) << "Lebar (cm)" << endl;
+			for(int i = 0;i<3*n;i++) cout << "-";
+			cout << endl;
+		}
+		else {
+			for(int i = 0;i<2*n;i++) cout << "-";
+			cout << endl;
+			cout << setw(n+1) << "Luas (cm2)" << setw(10) << t << endl;
+			for(int i = 0;i<2*n;i++) cout << "-";
+			cout << endl;
+		}
+	}
+	else if(y == 2) {
+		cout << "Tampilkan " << s << " Berdasarkan Keliling" << endl << endl;		
+		if(x == 3) {
+			for(int i = 0;i<3*n;i++) cout << "-";
+			cout << endl;
+			cout << setw(n+1) << "Keliling (cm)" << setw(18) << "Panjang (cm)" << setw(10) << "Lebar (cm)" << endl;
+			for(int i = 0;i<3*n;i++) cout << "-";
+			cout << endl;
+		}
+		else {
+			for(int i = 0;i<2*n;i++) cout << "-";
+			cout << endl;
+			cout << setw(n+1) << "Keliling (cm)" << setw(10) << t << endl;
+			for(int i = 0;i<2*n;i++) cout << "-";
+			cout << endl;
+		}
+	}
+	
+	cout.unsetf(ios::adjustfield);
+	
 }
 
 void initialize()

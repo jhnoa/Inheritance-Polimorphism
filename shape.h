@@ -14,6 +14,9 @@ class shape
 		virtual void setValue(){return;}
 		virtual void luas(){return;}
 		virtual void keliling(){return;}
+		string getBentuk();
+//		virtual string getBentuk1();
+		string getAttr();
 		float getArea(){return area;}
 		float getArea() const {return area;}
 		float getPerimeter(){return perimeter;}
