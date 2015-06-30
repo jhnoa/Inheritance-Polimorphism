@@ -13,6 +13,7 @@ int menuTampilLanjut(int);
 void printHead(int,int,int);
 void initialize();
 void hapus(int);
+void tambah(int);
 
 list<shape> myshape;
 list<circle> mycircle;
@@ -106,21 +107,14 @@ int menuTambah()
 	int x = pilih(4, 14, 7);
 
 // pilihan yang muncul
-	if(x == 1)
-	{
-		
-	}
-	else if(x == 2)
-	{
-		
-	}
-	else if(x == 3)
-	{
-		
-	}
-	else if(x == 4)
+
+	if(x == 4)
 	{
 		return 1;
+	}
+	else
+	{
+		tambah(x);
 	}
 	
 	return 0;
@@ -573,6 +567,83 @@ void hapus(int mode)
 		 << endl
 		 << "Ketik apa saja untuk kembali";
 	getch(); return;
+}
+
+void tambah(int a)
+{
+	fstream file;
+	int x, y;
+	int p;
+	system("cls");
+	
+	if(a == 1)
+	{
+		cout 	<<"Tambah Circle" << endl
+				<< endl
+				<< "Masukan jari-jari: ";	
+		x = inputInt(19, 2);
+		cout << endl;
+		file.open("circle.txt", fstream::out | fstream::app);
+		
+		cout << "Yakin mau tambahkan data?(Y/N) ";
+		p = pilihYN(31,3);
+		file << x << endl;		
+	}
+	else if(a == 2)
+	{
+		cout << "Tambah Square" << endl
+			 << endl
+			 << "Masukan panjang sisi: ";
+		x = inputInt(22, 2);
+		cout << endl;
+		file.open("square.txt", fstream::out | fstream::app);
+		
+		cout << "Yakin mau tambahkan data?(Y/N) ";
+		p = pilihYN(31,3);
+		file << x << endl;
+	}
+	else if(a == 3)
+	{
+		cout 	<< "Tambah Rectangle" << endl
+				<< endl
+				<< "Masukan panjang: ";
+		x = inputInt(17,2);
+		cout 	<< endl << "Masukan lebar: ";
+		y = inputInt(15,3);
+		cout << endl;
+		file.open("rectangle.txt", fstream::out | fstream::app);
+		
+		if(x < y)
+		{	
+		cout << "Panjang lebih kecil dari lebar."<< endl <<"Yakin mau tambahkan data?(Y/N) ";
+		p = pilihYN(31,5);
+		if(p==1)
+			{
+				file << x << '\t' << y << endl;
+			}
+		}
+		else if(x>y)
+		{
+			cout <<"Yakin mau tambahkan data?(Y/N) ";
+			p = pilihYN(31,4);
+			file << y << '\t' << x << endl;
+		}
+		else if(x==y)
+		{
+			cout << "Panjang dan lebar bernilai sama."  << endl
+				 << "Sebaiknya masukan ke menu tambah square." << endl
+				 << endl
+				 << "Ketik untuk kembali ke menu sebelumnya";
+			getch();
+			
+		}
+		else
+		{
+			return;
+		}
+	}
+	
+	file.close();
 }
 
 
