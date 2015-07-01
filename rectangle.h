@@ -11,7 +11,7 @@ class rectangle : public shape
 		~rectangle();
 		bool operator < (rectangle);// buat sorting list
 		rectangle operator = (list<rectangle>::iterator);
-		void setValue(int a, int b){width = a; height = b; type = 2; rectangle::luas(); rectangle::keliling();}
+		void setValue(int a, int b){width = a; height = b; type = 3; rectangle::luas(); rectangle::keliling();}
 		void luas(){area = width * height;}
 		void keliling(){perimeter = 2 * (width + height);}
 		

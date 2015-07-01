@@ -21,6 +21,7 @@ class shape
 		float getArea() const {return area;}
 		float getPerimeter(){return perimeter;}
 		float getPerimeter() const {return perimeter;}
+		int getT(){return type;}
 		int mode(int); 
 		int getW() {return width;}
 		int getH() {return height;}

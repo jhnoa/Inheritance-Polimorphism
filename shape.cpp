@@ -50,8 +50,8 @@ bool shape::operator == (shape param)
 
 string shape::getBentuk() {
 	if(type == 1) return "Circle";
-	if(type == 2) return "Rectangle";
-	if(type == 3) return "Square";
+	if(type == 2) return "Square";
+	if(type == 3) return "Rectangle";
 }
 
 string shape::getAttr()
@@ -59,7 +59,7 @@ string shape::getAttr()
 	char *buffer = new char[1000];
 	string s;
 	
-	if(type == 2) { //rectangle
+	if(type == 3) { //rectangle
 		s = "Panjang = ";
 		itoa(height,buffer,10);
 		s += buffer;
@@ -72,7 +72,7 @@ string shape::getAttr()
 			s = "Jari-jari = ";
 			
 		}
-		else if(type == 3) {
+		else if(type == 2) {
 			s = "Sisi = ";
 			
 		}
