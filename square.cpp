@@ -4,6 +4,15 @@ square::square()
 {
 }
 
+square::square(int a)
+{
+	width = a;
+	type = 2;
+	square::luas();
+	square::keliling();
+}
+
+
 square::~square()
 {
 }

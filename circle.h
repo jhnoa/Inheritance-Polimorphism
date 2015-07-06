@@ -7,6 +7,7 @@ class circle : public shape
 {
 	public:
 		circle();
+		circle(int);
 		~circle();
 		bool operator < (circle);// buat sorting list
 		circle operator = (list<circle>::iterator);

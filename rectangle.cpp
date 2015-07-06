@@ -4,6 +4,15 @@ rectangle::rectangle()
 {
 }
 
+rectangle::rectangle(int a, int b)
+{
+	width = a;
+	height = b;
+	type = 3;
+	rectangle::luas();
+	rectangle::keliling();
+}
+
 rectangle::~rectangle()
 {
 }

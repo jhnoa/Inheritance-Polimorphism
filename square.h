@@ -7,6 +7,7 @@ class square : public shape
 {
 	public:
 		square();
+		square(int);
 		~square();
 		bool operator < (square);// buat sorting list
 		square operator = (list<square>::iterator);

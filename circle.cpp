@@ -4,6 +4,15 @@ circle::circle()
 {
 }
 
+circle::circle(int a)
+{
+	width = a;
+	type = 1;
+	circle::luas();
+	circle::keliling();
+	
+}
+
 circle::~circle()
 {
 }

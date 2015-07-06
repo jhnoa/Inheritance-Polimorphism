@@ -347,10 +347,10 @@ void initialize()
 	{
 		int x;
 		x = 0;
-		circle *temp = new circle;
 		file >> x;
 		if (x == 0) break;
-		temp->setValue(x);
+		circle *temp = new circle(x);
+//		temp->setValue(x);
 		myshape.push_back(*temp);
 		delete temp;
 	}
@@ -362,10 +362,10 @@ void initialize()
 	{
 		int x;
 		x = 0;
-		square *temp = new square;
 		file >> x;
 		if (x == 0) break;
-		temp->setValue(x);
+		square *temp = new square(x);
+//		temp->setValue(x);
 		myshape.push_back(*temp);
 		delete temp;
 	}
@@ -377,10 +377,10 @@ void initialize()
 	{
 		int x, y;
 		x = 0;
-		rectangle *temp = new rectangle;
 		file >> x >> y;
 		if (x == 0) break;
-		temp->setValue(y, x);
+		rectangle *temp = new rectangle(x,y);
+//		temp->setValue(y, x);
 		myshape.push_back(*temp);
 		delete temp;
 	}
@@ -419,10 +419,17 @@ void hapus(int mode)
 		cout << "Menu Hapus Rectangle" <<endl
 			 << endl
 			 << "Masukan Panjang: ";
-		x = inputInt(17, 2);
+		y = inputInt(17, 2);
 		cout << endl 
 			 << "Masukan Lebar: ";
-		y = inputInt(15, 3);
+		x = inputInt(15, 3);
+		if(x>y)
+		{
+			int t;
+			t = x;
+			x = y;
+			y = t;
+		}
 		file.open("rectangle.txt", fstream::in | fstream::out);
 	}
 //baca dari file
@@ -447,8 +454,8 @@ void hapus(int mode)
 		{
 			cout << endl
 				 << "Data ditemukan." << endl;
-			cout << "Panjang: " << x <<endl;
-			cout << "Lebar: " << y << endl;
+			cout << "Panjang: " << y <<endl;
+			cout << "Lebar: " << x << endl;
 			cout << "Yakin Akan Dihapus?(Y/N) ";
 			n = pilihYN(25, 7);
 			gotoxy(0,9);
